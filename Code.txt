@@ -1,0 +1,97 @@
+// test-case #1(Вход в учетную запись).
+
+class LoginForm{
+
+WebElement icon =  getElementById("loginIcon");
+WebElement userName = getElementById("user");
+WebElement password = getElementById("pass");
+WebElement loginButton = getElementById("loginButton");
+LoginForm(){
+	goto(habr.com);
+	this.Icon.click();
+	}
+void userInput(String S){
+	userName.click();
+	this.userName.value = s;
+	}
+
+void passwordInput(String S){
+	password.click();
+	this.userName.password = s;
+	}
+
+void btnClick(){
+	this.loginButton.click();
+	}
+}
+
+LoginForm obj = new LoginForm(); // переходим по иконке "войти"
+obj.userInput("user");
+obj.passwordInput("1234"); // заполняем инпуты 
+obj.btnClick; // кликаем войти
+assertTitle("Все публикации подряд");
+
+
+
+
+// test-case #2(Чтение статьи).
+
+class Feed{
+ArrayList<WebElement> publications[];
+
+Feed(){
+	goto(habr.com);
+	publications = getElementsByClassName("post__title_link");
+	}
+
+String getName(WebElement e){
+	return e.[0].getName();
+	}
+
+void goToLink(WebElement e){
+	e.[0].click();
+	}
+}
+
+Feed obj = new Feed();
+String title = obj.getName(publications);
+obj.goToLink(publications);
+assertTitle(title);
+
+// test-case #3(Написание статьи).
+
+class Editor{
+ArrayList<WebElement> inputs[];
+WebElement editorLogo = getElementById("btn_navbar_write-topic");
+ArrayList<WebElement> radioHeads[];
+WebElement forwardBtn;
+WebElement confirmBtn;
+String text = "1С-Битрикс";
+
+Editor(){
+	goTo(habr.com);
+	editorLogo.click();
+	}
+void check(){
+	radioheads = getElementsByTagName("radiohead");
+	forwardBtn = getElementById("Button");
+	for (i = 0 ; i<=radioheads.lenght;i++){
+		radioheads[i].ElementFormStatus("Checked");
+		}
+	forwardBtn.click();
+	}
+void fillInputs(String s){
+	inputs = getElementByClassName("input");
+	inputs.input(S);
+	}
+void publicate(){
+	confirmBtn.click();
+	}
+}
+
+Editor obj = new Editor();
+obj.check();
+obj.check(); // подтверждение условий
+obj.fillInputs(text); // заполнение полей
+obj.publicate();// публикация
+assertTitle("Хабр"); // проверка что публикация была совершена.
